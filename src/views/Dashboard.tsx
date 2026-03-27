@@ -14,30 +14,35 @@ function Dashboard() {
   const [selectedCity, setSelectedCity] = useState('')
 
   useEffect(() => {
-    let isMounted = true
+    const controller = new AbortController()
+    const runIfActive = (signal: AbortSignal, callback: () => void) => {
+      if (!signal.aborted) {
+        callback()
+      }
+    }
 
     const loadUsers = async () => {
       try {
-        const data = await getAllUsers()
-        if (isMounted) {
+        const data = await getAllUsers({ signal: controller.signal })
+        runIfActive(controller.signal, () => {
           setUsers(data)
           setError(null)
-        }
+        })
       } catch (fetchError) {
-        if (isMounted) {
+        runIfActive(controller.signal, () => {
           setError(fetchError instanceof Error ? fetchError.message : 'Failed to load users')
-        }
+        })
       } finally {
-        if (isMounted) {
+        runIfActive(controller.signal, () => {
           setIsLoading(false)
-        }
+        })
       }
     }
 
     loadUsers()
 
     return () => {
-      isMounted = false
+      controller.abort()
     }
   }, [])
 

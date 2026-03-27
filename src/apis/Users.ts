@@ -31,9 +31,14 @@ export type User = {
 	company: UserCompany;
 };
 
-export const getAllUsers = async (): Promise<User[]> => {
+type GetAllUsersOptions = {
+	signal?: AbortSignal;
+};
+
+export const getAllUsers = async (options: GetAllUsersOptions = {}): Promise<User[]> => {
 	const response = await fetch(`${API_DOMAIN}${USERS_PATH}`, {
 		method: "GET",
+		signal: options.signal,
 	});
 
 	if (!response.ok) {
