@@ -85,7 +85,7 @@ function Dashboard() {
 
           <Paper
             sx={{
-              p: { xs: 2, md: 3 },
+              p: { xs: 4, sm: 4, md: 3 },
               borderRadius: 4,
               bgcolor: 'rgba(255, 255, 255, 0.82)',
               backdropFilter: 'blur(10px)',
