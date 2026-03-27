@@ -11,8 +11,8 @@ function UserItem({ user }: UserItemProps) {
   const addressLine = `${user.address.street}, ${user.address.suite}, ${user.address.city} ${user.address.zipcode}`
 
   return (
-    <Card component="li" variant="outlined" sx={{ borderRadius: 4, boxShadow: '0 12px 24px rgba(23, 32, 61, 0.08)' }}>
-      <CardContent>
+    <Card component="li" variant="outlined" sx={{ borderRadius: 3, boxShadow: '0 12px 24px rgba(23, 32, 61, 0.08)' }}>
+      <CardContent sx={{ p: { xs: 2.5, md: 3 }, '&:last-child': { pb: { xs: 2.5, md: 3 } } }}>
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="space-between">
           <Box>
             <Typography variant="h6" fontWeight={600}>
@@ -28,7 +28,7 @@ function UserItem({ user }: UserItemProps) {
         <Divider sx={{ my: 2 }} />
 
         <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
-          <Box sx={{ flex: 1, p: 1.5, borderRadius: 3, bgcolor: 'rgba(25, 118, 210, 0.06)' }}>
+          <Box sx={{ flex: 1, p: 2, borderRadius: 2, bgcolor: 'rgba(25, 118, 210, 0.06)' }}>
             <Typography variant="overline" color="text.secondary">
               Contact
             </Typography>
@@ -36,7 +36,7 @@ function UserItem({ user }: UserItemProps) {
             <Typography variant="body2">{user.phone}</Typography>
             <Typography variant="body2">{user.website}</Typography>
           </Box>
-          <Box sx={{ flex: 1, p: 1.5, borderRadius: 3, bgcolor: 'rgba(25, 118, 210, 0.06)' }}>
+          <Box sx={{ flex: 1, p: 2, borderRadius: 2, bgcolor: 'rgba(25, 118, 210, 0.06)' }}>
             <Typography variant="overline" color="text.secondary">
               Address
             </Typography>
@@ -45,7 +45,7 @@ function UserItem({ user }: UserItemProps) {
               {user.address.geo.lat}, {user.address.geo.lng}
             </Typography>
           </Box>
-          <Box sx={{ flex: 1, p: 1.5, borderRadius: 3, bgcolor: 'rgba(25, 118, 210, 0.06)' }}>
+          <Box sx={{ flex: 1, p: 2, borderRadius: 2, bgcolor: 'rgba(25, 118, 210, 0.06)' }}>
             <Typography variant="overline" color="text.secondary">
               Company
             </Typography>

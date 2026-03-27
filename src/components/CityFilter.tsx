@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
+import { FormControl, MenuItem, Select, Typography } from '@mui/material'
 
 type CityFilterProps = {
   value: string
@@ -7,16 +7,22 @@ type CityFilterProps = {
 }
 
 function CityFilter({ value, options, onChange }: CityFilterProps) {
-  const labelId = 'city-filter-label'
-
   return (
     <FormControl fullWidth>
-      <InputLabel id={labelId}>City</InputLabel>
       <Select
-        labelId={labelId}
         value={value}
-        label="City"
+        displayEmpty
         onChange={(event) => onChange(event.target.value)}
+        renderValue={(selected) =>
+          selected ? (
+            selected
+          ) : (
+            <Typography component="span" color="text.secondary">
+              City
+            </Typography>
+          )
+        }
+        inputProps={{ 'aria-label': 'City' }}
       >
         <MenuItem value="">All cities</MenuItem>
         {options.map((city) => (
